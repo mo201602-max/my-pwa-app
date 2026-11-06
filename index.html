@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2457c5">
+  <meta name="description" content="HTMLとJavaScriptで作るPWA共通テンプレート">
+  <title>マイアプリ</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icons/icon-192.png">
+  <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-mark" aria-hidden="true">M</div>
+    <div class="header-text">
+      <div class="eyebrow">MY WEB APP</div>
+      <h1 id="appTitle">マイアプリ</h1>
+    </div>
+    <button id="installButton" class="install-button" hidden>インストール</button>
+  </header>
+
+  <main>
+    <section class="intro card">
+      <p class="eyebrow">PWA COMMON TEMPLATE / VER.1</p>
+      <h2>スマホアプリのように使える<br>Webアプリの土台です。</h2>
+      <p class="muted">この画面を自由に変更して、電卓・シミュレータ・学習ツールなどに作り替えられます。</p>
+    </section>
+
+    <section class="card">
+      <div class="section-heading">
+        <h2>動作確認</h2>
+        <span class="status-pill" id="networkStatus">確認中</span>
+      </div>
+      <p class="muted">ボタンを押すと、この端末に回数が保存されます。アプリを閉じても値は残ります。</p>
+      <div class="counter-row">
+        <div>
+          <div class="eyebrow">保存されたカウント</div>
+          <div class="counter-value" id="countValue">0</div>
+        </div>
+        <div class="counter-actions">
+          <button id="countButton" class="primary-button">＋ 1</button>
+          <button id="resetButton" class="secondary-button">リセット</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>アプリ情報</h2>
+      <dl class="info-list">
+        <div><dt>テンプレート</dt><dd>Ver.1.0.0</dd></div>
+        <div><dt>通信状態</dt><dd id="connectionText">確認中</dd></div>
+        <div><dt>Service Worker</dt><dd id="swText">確認中</dd></div>
+        <div><dt>表示モード</dt><dd id="displayText">確認中</dd></div>
+      </dl>
+    </section>
+
+    <section class="card help-card">
+      <h2>ホーム画面への追加</h2>
+      <ol>
+        <li>AndroidのChromeでこのページを開きます。</li>
+        <li>画面上部の「インストール」、またはChromeメニューから「アプリをインストール」を選びます。</li>
+        <li>追加後はホーム画面のアイコンから起動できます。</li>
+      </ol>
+      <p class="small muted">インストール項目の表示は、ブラウザや端末の状態によって異なります。</p>
+    </section>
+  </main>
+
+  <footer>
+    <span>MY PWA TEMPLATE</span>
+    <span id="appVersion">Ver.1.0.0</span>
+  </footer>
+
+  <div id="updateNotice" class="update-notice" hidden>
+    <span>新しいバージョンがあります。</span>
+    <button id="updateButton">更新する</button>
+    <button id="dismissUpdate" class="notice-close" aria-label="閉じる">×</button>
+  </div>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="./app.js" defer></script>
+</body>
+</html>
